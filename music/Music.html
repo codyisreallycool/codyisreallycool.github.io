@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music Notification</title>
+        <style>
+            @font-face {
+                font-family: 'MinecraftB';
+                src: url('../MinecraftB.otf');
+            }
+            
+            @font-face {
+                font-family: 'MinecraftR';
+                src: url('../MinecraftR.otf');
+            }
+
+            html, body {
+                overflow: hidden;
+                height: fit-content;
+                width: fit-content;
+                color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+
+            #music {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            #image {
+                width: 51px;
+                image-rendering: crisp-edges;
+            }
+
+            .text-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            #name, #author {
+                width: fit-content;
+                white-space: nowrap;
+                margin: 0;
+            }
+
+            #name {
+                font-family: 'MinecraftB', sans-serif;
+                font-size: 20px;
+                text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+            }
+
+            #author {
+                font-family: 'MinecraftR', sans-serif;
+                font-size: 16px;
+                opacity: 50%;
+                margin: 0;
+                text-shadow: 1.7px 1.7px 0 rgba(0, 0, 0, 0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="music">
+            <img id="image" src="../music.png">
+            <div class="text-container">
+                <p id="name">To use this service, add the following into the URL:</p>
+                <p id="author">?name=Example 1&author=Example 2</p>
+            </div>
+        </div>
+
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get("name");
+            const author = urlParams.get("author");
+
+            if (name || author) {
+                if (name) {
+                    document.getElementById("name").textContent = name
+                } else {
+                    document.getElementById("name").textContent = ""
+                }
+                if (author) {
+                    document.getElementById("author").textContent = author
+                } else {
+                    document.getElementById("author").textContent = ""
+                }
+            }
+
+            if (name) document.getElementById("name").textContent = name
+            if (author) document.getElementById("author").textContent = author
+        </script>
+    </body>
+</html>
